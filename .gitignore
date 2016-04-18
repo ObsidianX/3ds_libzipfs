@@ -4,3 +4,4 @@
 test/
 lib/
 build/
+CMakeLists.txt
