@@ -99,6 +99,12 @@ clean:
 	@rm -fr $(BUILD) lib
 
 #---------------------------------------------------------------------------------
+install: $(BUILD)
+	@cp $(OUTPUT) $(CTRULIB)/lib
+	@cp include/zipfs.h $(CTRULIB)/include
+	@echo "Installed!"
+#---------------------------------------------------------------------------------
+
 else
 
 DEPENDS	:=	$(OFILES:.o=.d)
