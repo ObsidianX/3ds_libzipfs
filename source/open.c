@@ -19,8 +19,13 @@ int zipfs_open(struct _reent *r, void *file_struct, const char *path, int flags,
     }
 
     char internal_path[FILENAME_MAX];
-    if (!strncmp(path, "sample:/", 8)) {
-        strcpy(internal_path, path + 8);
+
+    char test_dev_name[FILENAME_MAX];
+    sprintf(test_dev_name, "%s:/", mount->devoptab.name);
+    size_t test_dev_name_len = strlen(test_dev_name);
+
+    if (!strncmp(path, test_dev_name, test_dev_name_len)) {
+        strcpy(internal_path, path + test_dev_name_len);
     } else if (!strncmp(path, "/", 1)) {
         strcpy(internal_path, path + 1);
     } else {
