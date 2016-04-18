@@ -1,0 +1,6 @@
+.idea
+*.zip
+*.tags
+test/
+lib/
+build/
