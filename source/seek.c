@@ -1,5 +1,5 @@
-#include <unistd.h>
 #include <errno.h>
+#include <unistd.h>
 
 #include "zipfs_internal.h"
 
@@ -18,12 +18,12 @@ off_t zipfs_seek(struct _reent *r, int fd, off_t pos, int dir) {
             actual_pos += file->filesize;
             break;
         default:
-            errno = EINVAL;
+            r->_errno = EINVAL;
             return -1;
     }
 
     if (actual_pos < 0 || actual_pos >= file->filesize) {
-        errno = EINVAL;
+        r->_errno = EINVAL;
         return -1;
     }
 
